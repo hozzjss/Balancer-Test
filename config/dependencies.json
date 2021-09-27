@@ -1,9 +1,1 @@
-[
-    {
-        "autoActivateOnIdentityCreation": true,
-        "autoInjectStartingPeriodWeight": 0.05,
-        "name": "SourceCred-attribution",
-        "periods": [
-        ]
-    }
-]
+[]
