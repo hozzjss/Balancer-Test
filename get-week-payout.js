@@ -23,4 +23,7 @@ const main = async () => {
       }
     }
   }
+  console.log(file);
 };
+
+main();
