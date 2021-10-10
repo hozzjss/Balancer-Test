@@ -29,6 +29,9 @@ jobs:
           NODE_OPTIONS: "--max-old-space-size=16384"
 
       - name: Distribute Grain 💸
+        env:
+          NODE_OPTIONS: "--max-old-space-size=16384"
+
         run: yarn grain > grain_output.txt
 
       - name: Set environment variables
