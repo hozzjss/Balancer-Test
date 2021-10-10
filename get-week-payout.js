@@ -19,7 +19,7 @@ const main = async () => {
         `{"type":"EVM","chainId":"137","tokenAddress":"0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3"}`
       );
       if (address) {
-        file += `${address},${amount}\n`;
+        file += `${address},${amount / 1e18}\n`;
       }
     }
   }
