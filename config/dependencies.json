@@ -1,2 +1,9 @@
 [
+    {
+        "autoActivateOnIdentityCreation": true,
+        "id": "glIRNMBAMajhY5wEgMv4sw",
+        "name": "Treasury",
+        "periods": [
+        ]
+    }
 ]
