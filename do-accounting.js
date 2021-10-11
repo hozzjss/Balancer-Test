@@ -11,13 +11,16 @@ const main = async () => {
       error: `Error processing ledger events: ${ledgerResult.error}`,
     };
   }
-  const treasuryId = ledgerManager.ledger.accountByName("Treasury");
+  const treasuryId = ledgerManager.ledger.accountByName("Treasury").identity.id;
+  ledgerManager.ledger.activate(treasuryId);
   const distributions = Array.from(ledgerManager.ledger.distributions());
   const { allocations } = distributions[distributions.length - 1];
   for (let { receipts } of allocations) {
     for (let { id } of receipts) {
       const amount = ledgerManager.ledger.account(id).balance;
       if (Number(amount) > 0 && id !== treasuryId) {
+        ledgerManager.ledger.activate(id);
+
         ledgerManager.ledger.transferGrain({
           from: id,
           to: treasuryId,
