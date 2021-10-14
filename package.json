@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "sourcecred": "^0.9.1"
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "sourcecred": "^0.10.0"
   },
   "scripts": {
     "clean": "rimraf cache site",
