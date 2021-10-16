@@ -19,6 +19,15 @@ const ledgerManager = new LedgerManager({
   storage: diskStorage,
 });
 
+const bannedRoles = [
+  "638465162654908416",
+  "752527211961122838",
+  "746733789895721060",
+  "806572268742246420",
+  "771356924033105961",
+];
+
 module.exports = {
   ledgerManager,
+  bannedRoles,
 };

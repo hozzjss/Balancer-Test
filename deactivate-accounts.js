@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { ledgerManager } = require("./util");
+const { ledgerManager, bannedRoles } = require("./util");
 
 const { Client, Intents, TextChannel } = require("discord.js");
 const client = new Client({
@@ -9,13 +9,6 @@ const client = new Client({
 client.on("ready", async () => {
   const balancer = await client.guilds.fetch("638460494168064021");
   // Baller, core, admin, discord-admin, and fire-eyes roles.
-  const bannedRoles = [
-    "638465162654908416",
-    "752527211961122838",
-    "746733789895721060",
-    "806572268742246420",
-    "771356924033105961",
-  ];
   await ledgerManager.reloadLedger();
 
   const ledger = ledgerManager.ledger;
