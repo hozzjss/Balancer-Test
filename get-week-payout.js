@@ -11,6 +11,7 @@ const main = async () => {
   }
   const distributions = Array.from(ledgerManager.ledger.distributions());
   const { allocations } = distributions[distributions.length - 1];
+  let total = 0;
   for (let { receipts } of allocations) {
     for (let { id } of receipts) {
       const account = ledgerManager.ledger.account(id);
@@ -18,12 +19,14 @@ const main = async () => {
       const address = account.payoutAddresses.get(
         `{"type":"EVM","chainId":"137","tokenAddress":"0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3"}`
       );
-      if (address) {
-        file += `${address},${amount / 1e18}\n`;
+      if (address && amount > 0) {
+        total += Number((amount / 1e18).toFixed(18)) * 1e18;
+        file += `${address},${(amount / 1e18).toFixed(18)}\n`;
       }
     }
   }
   console.log(file);
+  console.log(total);
 };
 
 main();
