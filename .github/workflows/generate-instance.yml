@@ -35,6 +35,7 @@ jobs:
         env:
           SOURCECRED_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SOURCECRED_DISCORD_TOKEN: ${{ secrets.SOURCECRED_DISCORD_TOKEN }}
+          NODE_OPTIONS: "--max-old-space-size=16384"
 
       - name: Generate Frontend 🏗
         run: |
