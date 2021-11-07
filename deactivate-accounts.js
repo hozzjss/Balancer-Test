@@ -23,13 +23,18 @@ client.on("ready", async () => {
     if (!discordAlias) {
       continue;
     }
-    const [, , , , , discordId] = discordAlias.address.split("\x00");
-    const member = await balancer.members.fetch(discordId);
-    let isNotEligible = false;
-    for (let roleId of bannedRoles) {
-      isNotEligible = member.roles.cache.has(roleId) || isNotEligible;
-    }
-    if (isNotEligible) {
+    try {
+      const [, , , , , discordId] = discordAlias.address.split("\x00");
+      const member = await balancer.members.fetch(discordId);
+      let isNotEligible = false;
+      for (let roleId of bannedRoles) {
+        isNotEligible = member.roles.cache.has(roleId) || isNotEligible;
+      }
+      if (isNotEligible) {
+        ledger.deactivate(account.identity.id);
+      }
+    } catch (error) {
+      console.log(error);
       ledger.deactivate(account.identity.id);
     }
   }
